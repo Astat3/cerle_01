@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:13:20 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/10/13 16:31:37 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/03 16:47:45 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-int	static ft_is_sep(char c, char sep);
+int	static	ft_is_sep(char c, char sep);
 
-int static count_words(char const *str, char sep)
+int static	count_words(char const *str, char sep)
 {
 	int	i;
 	int	token;
@@ -42,14 +42,14 @@ int static count_words(char const *str, char sep)
 	return (token);
 }
 
-int static ft_is_sep(char c, char sep)
+int static	ft_is_sep(char c, char sep)
 {
 	if (c == sep)
 		return (1);
 	return (0);
 }
 
-char static *ft_strdup(char const *src, int start, int end)
+char static	*ft_strdup(char const *src, int start, int end)
 {
 	char	*arr;
 	int		i;
@@ -67,7 +67,7 @@ char static *ft_strdup(char const *src, int start, int end)
 	return (arr);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	int		i;
 	char	**tab;
@@ -77,7 +77,7 @@ char **ft_split(char const *s, char c)
 	i = 0;
 	row = 0;
 	start = 0;
-	tab = malloc(((count_words(s, c) + 1)* sizeof(char *))) ;
+	tab = malloc(((count_words(s, c) + 1) * sizeof(char *)));
 	if (tab == NULL)
 		return (NULL);
 	while (s[i])

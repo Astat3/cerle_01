@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 15:31:34 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/10/17 15:31:37 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/03 16:48:59 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strrchr(const char *s, int c)
 	size_t	i;
 	char	*alts;
 
-	alts = (char*)s;
+	alts = (char *)s;
 	i = ft_strlen(s);
 	if (c == '\0')
 		return (alts + i);

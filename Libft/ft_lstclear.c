@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 19:32:59 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/10/15 18:59:39 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/03 16:40:17 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 typedef struct s_list
 {
-	void			*content; 
-	struct s_list 	*next;
+	void			*content;
+	struct s_list	*next;
 }				t_list;
 
 void	del(void *ptr)
@@ -23,16 +23,16 @@ void	del(void *ptr)
 	free(ptr);
 }
 
-void ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list *actual;
-	t_list *tmp;
-	
-	if(!lst || !del)
-		return;
-	if(*lst == NULL)
+	t_list	*actual;
+	t_list	*tmp;
+
+	if (!lst || !del)
 		return ;
-	actual = *lst; 
+	if (*lst == NULL)
+		return ;
+	actual = *lst;
 	while (actual)
 	{
 		tmp = actual->next;

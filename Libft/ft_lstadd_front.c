@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 17:59:33 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/10/15 18:59:34 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/03 16:38:07 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 typedef struct s_list
 {
-	void			*content; 
-	struct s_list 	*next;
-}				t_list; 
+	void			*content;
+	struct s_list	*next;
+}				t_list;
 
-void ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (lst && new)
 	{
-		new->next = *lst; 
+		new->next = *lst;
 		*lst = new;
 	}
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 01:54:10 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/10/11 02:01:02 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/03 16:46:33 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void static fputhchar_fd(char c, int fd)
+void static	fputhchar_fd(char c, int fd)
 {
 	write (fd, &c, 1);
 }

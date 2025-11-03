@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 18:26:18 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/10/15 18:59:49 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/03 16:42:30 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 typedef struct s_list
 {
-	void			*content; 
-	struct s_list 	*next;
+	void			*content;
+	struct s_list	*next;
 }				t_list;
 
 //last element has the next =null;
-t_list *ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if(lst == NULL)
+	if (lst == NULL)
 		return (NULL);
 	while (lst->next != NULL)
 	{

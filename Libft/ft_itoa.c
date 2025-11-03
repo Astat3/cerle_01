@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 15:26:51 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/10/13 15:56:31 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/03 16:36:20 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	count_num(long int n)
 {
-	int	count; 
+	int	count;
 
 	count = 0;
 	if (n < 0)
@@ -32,14 +32,14 @@ static int	count_num(long int n)
 
 char	*ft_itoa(int n)
 {
-	long int nbr;
-	int size;
-	char *res;
-	
+	long int	nbr;
+	int			size;
+	char		*res;
+
 	nbr = n;
 	size = count_num(nbr);
 	res = malloc((sizeof(char)) * (size + 1));
-	if(!res)
+	if (!res)
 		return (NULL);
 	res[size--] = '\0';
 	if (nbr == 0)

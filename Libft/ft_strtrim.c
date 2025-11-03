@@ -3,29 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:32:02 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/10/13 18:25:22 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/03 16:50:16 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-int static ft_strlen(char const *s1)
+int static	ft_strlen(char const *s1)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s1[i])
 		i++;
 	return (i);
 }
-int static is_sep(const char c, char const *sep)
+
+int static	is_sep(const char c, char const *sep)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (sep[i])
 	{
@@ -39,35 +40,36 @@ int static is_sep(const char c, char const *sep)
 }
 
 //taille du malloc + index début fin
-int static trim_len(char const *s1, char const *sep, int *ptr_start, int *ptr_end)
+int static	trim_len(char const *s1, char const *sep,
+	int *ptr_start, int *ptr_end)
 {
-	int start; 
-	int end;
+	int	start;
+	int	end;
 
 	start = 0;
 	end = ft_strlen(s1);
 	while (s1[start] && is_sep(s1[start], sep))
 	{
-		start ++;	
+		start ++;
 	}
 	while (!(s1[end]) || (is_sep(s1[end], sep) != 0))
 	{
-		end--; 
+		end--;
 	}
 	*ptr_end = end + 1;
-	*ptr_start = start; 
+	*ptr_start = start;
 	return (end - start);
 }
 
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*dest;
-	int 	size;
+	int		size;
 	int		start;
 	int		end;
 	int		i;
-	
-	i = 0; 
+
+	i = 0;
 	size = trim_len(s1, set, &start, &end);
 	dest = malloc((sizeof(char)) * (size + 1));
 	if (!dest)

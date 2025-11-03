@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 19:06:16 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/10/11 01:55:25 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/03 16:48:17 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int ft_strlen(const char *s)
+static int	ft_strlen(const char *s)
 {
 	int	i;
 
@@ -24,12 +24,12 @@ static int ft_strlen(const char *s)
 	return (i);
 }
 
-char *ft_strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
-	int i; 
-	char *dest;
-	int size;
-	
+	int		i;
+	char	*dest;
+	int		size;
+
 	i = 0;
 	size = ft_strlen(s);
 	dest = malloc((sizeof(char)) * (size + 1));
@@ -44,11 +44,4 @@ char *ft_strdup(const char *s)
 	}
 	dest[i] = '\0';
 	return (dest);
-}
-
-int main (void)
-{
-	char *src = "Bonjour";
-	char *dest = ft_strdup(src);
-	printf("%s\n", dest);
 }
