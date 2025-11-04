@@ -6,7 +6,7 @@
 /*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 00:29:18 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/10/17 15:52:59 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/04 11:01:47 by adamgallot       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,16 @@ size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 
 
+
 /*add*/
 char	*ft_itoa(int n);
 void	ft_puthchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 char	**ft_split(char const *s, char c);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_putnbr_fd(int n, int fd);
 
 //bonus
 typedef struct s_list

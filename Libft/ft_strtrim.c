@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:32:02 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/03 16:50:16 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/04 11:07:27 by adamgallot       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int static	is_sep(const char c, char const *sep)
 		{
 			return (1);
 		}
-	i++;
+		i++;
 	}
 	return (0);
 }

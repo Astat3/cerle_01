@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/13 16:01:29 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/04 11:04:51 by adamgallot       ###   ########.fr       */
+/*   Created: 2025/11/04 11:00:30 by adamgallot        #+#    #+#             */
+/*   Updated: 2025/11/04 11:03:03 by adamgallot       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void static	fputhchar_fd(char c, int fd)
+static void	print_nb(long nb, int fd)
 {
-	write (fd, &c, 1);
+	if (nb / 10)
+	{
+		print_nb(nb / 10, fd);
+		print_nb(nb % 10, fd);
+	}
+	else
+		ft_putchar_fd(nb + '0', fd);
 }
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	i;
+	long	nb;
 
-	i = 0;
-	while (s[i])
+	nb = n;
+	if (nb < 0)
 	{
-		fputhchar_fd(s[i], fd);
-		i++;
+		write(fd, "-", 1);
+		nb = -nb;
 	}
-	write(1, "\n", 1);
+	print_nb(nb, fd);
 }
