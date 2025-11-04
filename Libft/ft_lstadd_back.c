@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 18:37:27 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/03 16:37:31 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/04 19:05:54 by adamgallot       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}				t_list;
 
 static t_list	*ft_lst_last(t_list *lst)
 {

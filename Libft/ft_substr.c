@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 19:21:24 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/04 17:51:28 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/04 18:59:39 by adamgallot       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	{
 		res[i++] = s[start++];
 	}
-	res[i] = 'a';
+	res[i] = '\0';
 	return (res);
 }
+
+// int main (void)
+// {
+//     printf("%s\n", ft_substr("tripouille", 0, 420000));
+// }
