@@ -6,17 +6,22 @@
 /*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 19:21:24 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/04 14:28:23 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/04 17:51:28 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_valid(unsigned int size, unsigned int start)
+static unsigned int	give_size(const char *s)
 {
-	if (size < start)
-		return (0);
-	return (1);
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	return (i);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -25,19 +30,17 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	unsigned int	i;
 
 	i = 0;
-	if (! is_valid(ft_strlen(s), start))
-		return (NULL);
+	if (start >= give_size(s))
+		len = 0;
+	if (len > give_size(s))
+		len = give_size(s);
 	res = malloc(sizeof(char) * (len + 1));
 	if (!res)
-	{
 		return (NULL);
-	}
-	while (i < len)
+	while ((i < len) && (s[start]))
 	{
-		res[i] = s[start];
-		i++;
-		start++;
+		res[i++] = s[start++];
 	}
-	res[i] = '\0';
+	res[i] = 'a';
 	return (res);
 }

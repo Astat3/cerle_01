@@ -3,34 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:01:29 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/04 16:26:27 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/04 17:10:40 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static void	fputhchar_fd(char c, int fd)
-{
-	write (fd, &c, 1);
-}
 
 void	ft_putendl_fd(char *s, int fd)
 {
 	int	i;
 
 	i = 0;
-    if (s[0] == '\0')
-    {
-        return (NULL);
-    }
-    
 	while (s[i])
 	{
-		fputhchar_fd(s[i], fd);
+		ft_putchar_fd(s[i], fd);
 		i++;
 	}
-	write(1, "\n", 1);
+	write(1, "\n", fd);
 }

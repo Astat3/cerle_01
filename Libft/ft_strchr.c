@@ -6,7 +6,7 @@
 /*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 13:49:04 by agallot           #+#    #+#             */
-/*   Updated: 2025/11/04 14:12:06 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/04 18:02:43 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ char	*ft_strchr(const char *s, int c)
 	{
 		return ((char *)s);
 	}	
-	while (s)
+	while (s[i])
 	{
-		if (*s == c)
+		if (s[i] == c)
 		{
 			return ((char *)(s + i));
 		}
-		s++;
+		i++;
 	}
 	return (NULL);
 }

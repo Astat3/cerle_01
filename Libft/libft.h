@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 00:29:18 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/04 16:25:10 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/04 17:02:01 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int			ft_memcmp(const void *s1, const void *s2, size_t n);
 char		*ft_strchr(const char *s, int c);
 void	    *ft_calloc(size_t count, size_t size);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
+
 
 
 
