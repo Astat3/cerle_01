@@ -3,27 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:32:02 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/04 11:07:27 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/04 14:27:44 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-int static	ft_strlen(char const *s1)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i])
-		i++;
-	return (i);
-}
-
-int static	is_sep(const char c, char const *sep)
+static int	is_sep(const char c, char const *sep)
 {
 	int	i;
 
@@ -40,7 +29,7 @@ int static	is_sep(const char c, char const *sep)
 }
 
 //taille du malloc + index début fin
-int static	trim_len(char const *s1, char const *sep,
+static int	trim_len(char const *s1, char const *sep,
 	int *ptr_start, int *ptr_end)
 {
 	int	start;

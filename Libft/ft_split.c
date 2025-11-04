@@ -6,16 +6,16 @@
 /*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:13:20 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/03 16:47:45 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/04 14:16:51 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-int	static	ft_is_sep(char c, char sep);
+static int	ft_is_sep(char c, char sep);
 
-int static	count_words(char const *str, char sep)
+static int	count_words(char const *str, char sep)
 {
 	int	i;
 	int	token;
@@ -42,14 +42,14 @@ int static	count_words(char const *str, char sep)
 	return (token);
 }
 
-int static	ft_is_sep(char c, char sep)
+static int	ft_is_sep(char c, char sep)
 {
 	if (c == sep)
 		return (1);
 	return (0);
 }
 
-char static	*ft_strdup(char const *src, int start, int end)
+static char	*ft_strdup(char const *src, int start, int end)
 {
 	char	*arr;
 	int		i;

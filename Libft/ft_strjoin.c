@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/11 01:54:10 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/04 14:15:52 by agallot          ###   ########.fr       */
+/*   Created: 2025/11/04 14:22:37 by agallot           #+#    #+#             */
+/*   Updated: 2025/11/04 14:57:35 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	fputhchar_fd(char c, int fd)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	write (fd, &c, 1);
-}
+	char	*new;
+	size_t	i;
+	size_t	j;
 
-void	ft_putstr_fd(char *s, int fd)
-{
-	int	i;
-
+	new = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!new)
+		return (NULL);
 	i = 0;
-	while (s[i])
+	while (s1[i])
 	{
-		fputhchar_fd(s[i], fd);
+		new[i] = s1[i];
 		i++;
 	}
+	j = 0;
+	while (s2[j])
+	{
+		new[i + j] = s2[j];
+		j++;
+	}
+	new[i + j] = '\0';
+	return (new);
 }

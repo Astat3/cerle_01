@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atoi.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 15:09:52 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/03 16:24:04 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/04 14:42:35 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,27 @@
 int	ft_atoi(const char *str)
 {
 	size_t	i;
-	size_t	z;
 	size_t	sign;
+	int		res;
 
 	i = 0;
-	z = 0;
 	sign = 1;
-	while (ft_isspace(str[z]))
-		z++;
-	if (str == '\0')
-		return (0);
-	if (str[z] == '-' || str[z] == '+')
+	res = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if ((str[i] == '+') || (str[i] == '-'))
 	{
-		if (str[z] == '-')
+		if (str[i] == '-')
+		{
 			sign *= -1;
-		z++;
+		}
+		i++;
 	}
-	while (str[z] && str[z] >= '0' && str[z] <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		i = i * 10 + str[z] - '0';
-		z++;
+		res *= 10;
+		res += str[i] - '0';
+		i++;
 	}
-	return (i * sign);
+	return (res * sign);
 }

@@ -3,29 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 19:21:24 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/03 18:14:35 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/04 14:28:23 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-int static	ft_strlen(char const *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
-int static	is_valid(unsigned int size, unsigned int start)
+static int	is_valid(unsigned int size, unsigned int start)
 {
 	if (size < start)
 		return (0);

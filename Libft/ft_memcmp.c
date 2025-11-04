@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/11 01:54:10 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/04 14:15:52 by agallot          ###   ########.fr       */
+/*   Created: 2025/11/04 11:42:18 by agallot           #+#    #+#             */
+/*   Updated: 2025/11/04 13:45:04 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	fputhchar_fd(char c, int fd)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	write (fd, &c, 1);
-}
+	const unsigned char	*str1;
+	const unsigned char	*str2;
+	size_t				index;
 
-void	ft_putstr_fd(char *s, int fd)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
+	index = 0;
+	str1 = (unsigned char *) s1;
+	str2 = (unsigned char *)s2;
+	while (index < n)
 	{
-		fputhchar_fd(s[i], fd);
-		i++;
+		if (str1[index] > str2[index])
+		{
+			return (1);
+		}
+		if (str1[index] < str2[index])
+		{
+			return (-1);
+		}
+		index++;
 	}
+	return (0);
 }

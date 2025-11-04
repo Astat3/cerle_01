@@ -6,13 +6,13 @@
 /*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 17:12:57 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/03 16:25:52 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/04 11:39:28 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	*ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *b, int c, size_t len)
 {
 	unsigned char		*placeholder;
 
@@ -41,7 +41,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	if (nmemb == 0 || size == 0)
 		return (NULL);
-	if (nmemb > (SIZE_MAX / size))
+	if (nmemb > ((size_t) - 1 / size))
 		return (NULL);
 	return (og_alloc(size * nmemb));
 }
