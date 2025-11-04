@@ -3,79 +3,105 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:32:02 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/04 14:27:44 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/04 16:24:54 by adamgallot       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_sep(const char c, char const *sep)
+static char	*find_begin(char const *s1, char const *set)
 {
-	int	i;
+	size_t	i;
+	size_t	j;
+	int		in_set;
 
+	in_set = 0;
 	i = 0;
-	while (sep[i])
+	j = 0;
+	while (s1[i])
 	{
-		if (c == sep[i])
+		in_set = 0;
+		j = 0;
+		while (set[j])
 		{
-			return (1);
+			if (s1[i] == set[j])
+				in_set = 1;
+			j++;
 		}
+		if (!in_set)
+			break ;
 		i++;
 	}
-	return (0);
+	return ((char *) s1 + i);
 }
 
-//taille du malloc + index début fin
-static int	trim_len(char const *s1, char const *sep,
-	int *ptr_start, int *ptr_end)
+static char	*find_end(char const *s1, char const *set, char const *begin)
 {
-	int	start;
-	int	end;
+	size_t	i;
+	size_t	j;
+	int		in_set;
 
-	start = 0;
-	end = ft_strlen(s1);
-	while (s1[start] && is_sep(s1[start], sep))
+	in_set = 0;
+	i = ft_strlen(s1) - 1;
+	j = 0;
+	while (s1 + i >= begin)
 	{
-		start ++;
+		in_set = 0;
+		j = 0;
+		while (set[j])
+		{
+			if (s1[i] == set[j])
+				in_set = 1;
+			j++;
+		}
+		if (!in_set)
+			break ;
+		i--;
 	}
-	while (!(s1[end]) || (is_sep(s1[end], sep) != 0))
+	if (s1 + i < begin)
+		return ((char *) begin);
+	return ((char *) s1 + i);
+}
+
+static char	*fill_str(char const *begin, char const *end)
+{
+	char	*new;
+	size_t	i;
+
+	new = malloc(sizeof(char) * (end - begin + 2));
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (begin + i <= end)
 	{
-		end--;
+		new[i] = begin[i];
+		i++;
 	}
-	*ptr_end = end + 1;
-	*ptr_start = start;
-	return (end - start);
+	new[i] = '\0';
+	return (new);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*dest;
-	int		size;
-	int		start;
-	int		end;
-	int		i;
+	char	*begin;
+	char	*end;
+	char	*new;
 
-	i = 0;
-	size = trim_len(s1, set, &start, &end);
-	dest = malloc((sizeof(char)) * (size + 1));
-	if (!dest)
-		return (NULL);
-	while (start < end)
+	begin = find_begin(s1, set);
+	end = find_end(s1, set, s1);
+	if (!s1[0] || end < begin)
 	{
-		dest[i++] = s1[start++];
+		new = malloc(sizeof(char) * 1);
+		if (!new)
+			return (NULL);
+		new[0] = '\0';
 	}
-	dest[i] = '\0';
-	return (dest);
+	else
+		new = fill_str(begin, end);
+	if (!new)
+		return (NULL);
+	return (new);
 }
-
-// int main(void)
-// {
-// 	const char *src = "a  bonjour    a      ";
-// 	const char *sep = "a ";
-// 	char *dest = ft_strtrim(src,sep);
-// 	printf("size %d\n", ft_strlen(src));
-// 	printf("%s", dest);
-// }

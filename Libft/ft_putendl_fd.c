@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:01:29 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/04 14:13:04 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/04 16:26:27 by adamgallot       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	ft_putendl_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
+    if (s[0] == '\0')
+    {
+        return (NULL);
+    }
+    
 	while (s[i])
 	{
 		fputhchar_fd(s[i], fd);
