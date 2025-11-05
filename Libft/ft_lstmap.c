@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 19:58:24 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/05 17:56:23 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/05 18:07:50 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list *ft_lstmap(t_list *lst, void *(*f)(void *),void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list  *new_node;
-	t_list  *new_list;
+	t_list	*new_node;
+	t_list	*new_list;
+
 	if (!lst)
 		return (NULL);
 	new_list = NULL;
@@ -23,13 +24,13 @@ t_list *ft_lstmap(t_list *lst, void *(*f)(void *),void (*del)(void *))
 	{
 		if (f)
 		{
-			new_node = ft_lstnew(f(lst->content));		
+			new_node = ft_lstnew(f(lst->content));
 		}
 		else
 		{
 			new_node = ft_lstnew(lst->content);
 		}
-		if(!new_node)
+		if (!new_node)
 		{
 			ft_lstclear(&new_list, del);
 			return (NULL);
