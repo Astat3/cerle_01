@@ -1,0 +1,21 @@
+bib == unistd.h
+
+open:
+    int open(const char *pathname, int flags);
+    int open(const char *pathname, int flags, mode_t mode);
+    open files for reading, writing or both
+    flags dans <fcntl.h>
+    flags are use to specify how you want to open the file
+
+close
+    int close(int fd);
+    0 on succes 
+    -1 errror
+read
+    ssize_t read(int fd, void *buf, size_t count);
+    read the amout of bytes given as count, into the memory area wich is the buffer
+    successful read = time of file updated
+    return the amount of byte red\
+    0 if reached the end of the file
+    -1 if error
+    
