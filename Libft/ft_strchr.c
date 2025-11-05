@@ -5,9 +5,9 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/04 13:49:04 by agallot           #+#    #+#             */
-/*   Updated: 2025/11/04 18:54:04 by adamgallot       ###   ########.fr       */
-/*                                                                       n     */
+/*   Created: 2025/11/05 15:55:05 by adamgallot        #+#    #+#             */
+/*   Updated: 2025/11/05 15:56:00 by adamgallot       ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
@@ -16,7 +16,7 @@ char	*ft_strchr(const char *s, int c)
 {
 	unsigned int	i;
 
-	i = 0;	
+	i = 0;
 	while (s[i])
 	{
 		if ((unsigned char) s[i] == (unsigned char)c)
@@ -25,9 +25,9 @@ char	*ft_strchr(const char *s, int c)
 		}
 		i++;
 	}
-    if ((unsigned char)c == '\0')
+	if ((unsigned char)c == '\0')
 	{
-		return ((char *) (s + i));
+		return ((char *)(s + i));
 	}
 	return (NULL);
 }

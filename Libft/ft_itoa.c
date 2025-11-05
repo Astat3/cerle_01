@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 15:26:51 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/03 16:36:20 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/05 16:08:05 by adamgallot       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static int	count_num(long int n)
 {
 	int	count;
 
 	count = 0;
-	if (n < 0)
+	if (n <= 0)
 	{
 		count++;
 		n *= -1;

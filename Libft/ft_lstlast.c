@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 18:26:18 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/04 11:33:20 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/05 17:47:05 by adamgallot       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}				t_list;
+#include "libft.h"
 
 //last element has the next =null;
 t_list	*ft_lstlast(t_list *lst)

@@ -6,17 +6,11 @@
 /*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 17:59:33 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/04 19:06:19 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/04 19:06:39 by adamgallot       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}				t_list;
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {

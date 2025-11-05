@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 00:29:18 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/04 17:02:01 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/05 17:42:09 by adamgallot       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			ft_isalpha(int c);
 int			ft_isascii(int c);
 int			ft_isdigit(int c);
 int			ft_isprint(int c);
-size_t	    ft_strlcat(char *d, const char *s, size_t dstsize);
+size_t      ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t		ft_strlen(const char *s);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*ft_strnstr(const char *big, const char *little, size_t len);
@@ -76,7 +76,6 @@ void ft_lstiter(t_list *lst, void (*f)(void *));
 void ft_lstdelone(t_list *lst, void (*del)(void*));
 void ft_lstclear(t_list **lst, void (*del)(void*));
 void ft_lstadd_front(t_list **lst, t_list *new);
-t_list *ft_lstlast(t_list *lst);
 t_list *ft_lstnew(void *content);
 void ft_lstadd_back(t_list **lst, t_list *new);
 
