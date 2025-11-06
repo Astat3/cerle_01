@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 22:52:27 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/10/23 20:28:27 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/06 03:10:31 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@ int	ft_strlen(char *str)
 	}
 	return (i);
 }
+void ft_putstr(char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+	{
+		write(1, &s[i] , 1);
+		i++;
+	}
+}
 
 void	ft_putchar(char c)
 {
@@ -37,6 +48,11 @@ int	print_string(char *s)
 {
 	int	count;
 
+	if (!s)
+	{
+		ft_putstr("(null)");
+		return 6;	
+	}
 	count = 0;
 	while (*s)
 	{
@@ -164,8 +180,8 @@ int main(void)
 {
 	int count = 0; 
 	int og_count = 0;
-	count = ft_printf("%%\n");
-	og_count = printf("%%\n");
+	count = ft_printf("123%s45\n", (char *) NULL);
+	og_count = printf("123%s45\n",(char *)NULL);
 	printf("count moi: %d\ncount og: %d\n", count, og_count);
 	return 0;
 }

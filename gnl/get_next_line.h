@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/17 15:31:34 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/06 01:04:23 by agallot          ###   ########.fr       */
+/*   Created: 2025/11/06 00:16:22 by agallot           #+#    #+#             */
+/*   Updated: 2025/11/06 03:00:28 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_H
+# define GET_H
 
-char	*ft_strrchr(const char *s, int c)
-{
-	size_t	i;
-	char	*alts;
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-	alts = (char *)s;
-	i = ft_strlen(s);
-	if (c == '\0')
-		return (alts + i);
-	while (i != 0)
-	{
-		if (alts[i] == (char)c)
-			return (alts + i);
-		i--;
-	}
-	if (s[0] == (char)c)
-		return (alts);
-	return (0);
-}
+#define BUFFER_SIZE 5
+
+char *get_next_line(int fd);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr(const char *s, int c);
+char *check_buffer_fill(char *buffer);
+
+#endif
