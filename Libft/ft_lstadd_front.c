@@ -6,7 +6,7 @@
 /*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 17:59:33 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/04 19:06:39 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/07 13:35:25 by adamgallot       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,3 +20,5 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 		*lst = new;
 	}
 }
+
+
