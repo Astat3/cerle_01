@@ -6,7 +6,7 @@
 /*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 00:15:56 by agallot           #+#    #+#             */
-/*   Updated: 2025/11/08 02:06:02 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/08 13:37:58 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,14 @@ char *ft_check_is_empty(char *tmp, char *buff)
 		free(hold_temp);
 	}
 	else if(!tmp)
-		// tmp is empty
 		tmp = ft_strdup(buff);
-	return (tmp);
+	return tmp;				
 }
 
 void aaaaaaaa(char **tmp)
 {
 	char *swap;
-	
+	//printf("voila le swap %s fin", swap);
 	swap = ft_strdup(ft_strchr(*tmp, '\n') + 1);
 	free(*tmp);
 	*tmp = swap;
@@ -89,20 +88,20 @@ char *ft_final_cut(char **tmp, char **buff, int bytes)
 	res = NULL;
 	if (*tmp && **tmp && bytes == 0) //en cas de fin de fichier
 	{
+		swap = ft_strdup(*tmp);
 		free(*tmp);
 		*tmp = NULL;
 		free(*buff);
 		*buff = NULL;
-		return (NULL);	
+		return (swap);
 	}
 	if (ft_strchr(*tmp, '\n') != NULL)
 	{
 		res = ft_substr(*tmp, 0,(ft_strlen(*tmp) - ft_strlen(ft_strchr(*tmp, '\n'))) + 1);
 		aaaaaaaa(tmp);
-		return (res);		
+		return (res);
 	}
-	
-	return NULL;
+	return (NULL);
 }
 
 char	*get_next_line(int fd)
@@ -110,15 +109,16 @@ char	*get_next_line(int fd)
 	static char	*tmp; 
 	char		*buff;
 	ssize_t		bytes; //valeur de retour de read
-
+	
+	
 	buff = NULL;
-	bytes = 1;
+	bytes = read(fd, buff, BUFFER_SIZE);
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	while (bytes)
 	{
-		if (is_newline(tmp) > 0)// il a trouvé le char donc on renvoi line
-			return (ft_final_cut(&tmp, &buff, bytes));
+		if  (ft_strchr(tmp, '\n'))//il a trouvé le char donc on renvoi line
+			return (ft_final_cut(&tmp, &buff, bytes));		
 		buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 		if(!buff)
 			return (NULL);
@@ -129,26 +129,22 @@ char	*get_next_line(int fd)
 		free(buff);
 		buff = NULL;
 	}
-		return (ft_final_cut(&tmp, &buff, bytes));
+	return (ft_final_cut(&tmp, &buff, bytes));
 }
 int main(void)
 {
 	int fd = 0;
 	
-	fd = open("note.txt", O_RDONLY);
+	fd = open("rien.txt", O_RDONLY);
 	if (fd == -1)
 	{
-		printf("Erreur");
-		return 1;
+		printf("ERROR\n");
+		return EXIT_FAILURE;
 	}
 	char *res = get_next_line(fd);
-	
+	while (res)
+	{
 		printf("%s", res);
 		res = get_next_line(fd);
-		printf("%s", res);
-		res = get_next_line(fd);
-		printf("%s", res);
-		res = get_next_line(fd);
-
-	return 0;
+	}
 }

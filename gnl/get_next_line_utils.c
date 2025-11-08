@@ -6,7 +6,7 @@
 /*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 00:19:07 by agallot           #+#    #+#             */
-/*   Updated: 2025/11/08 00:48:06 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/08 13:03:53 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ char	*ft_strchr(const char *s, int c)
 	unsigned int	i;
 
 	i = 0;
+	if (s == NULL)
+		return (0);
 	while (s[i])
 	{
 		if ((unsigned char) s[i] == (unsigned char)c)
