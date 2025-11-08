@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 00:15:56 by agallot           #+#    #+#             */
-/*   Updated: 2025/11/07 15:07:37 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/08 02:06:02 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,14 @@
 /*
 1 -> mettre un array de taille BUFFER_SIZE dans un node
 2-> regarder si \n 
-3-> Si non, on continue 
+3-> Si non	
+	res = NULL;
+	swap = NULL;
+	res = malloc(sizeof(char) * (is_newline(*tmp) + 1));
+	if (! res)
+		return (NULL);
+	ft_memcpy(res, *tmp,is_newline(*tmp)); // on copie en incluant \n | il faut copier le reste dans swap pr free tmp et remplacer temp par swap
+	swap = malloc(sizeof(char) * (ft_strlen(* tmp) - ft_strlen(res)));, on continue 
 4-> si oui on coupe en incluant le \n
 */
 
@@ -24,6 +31,8 @@ int	is_newline(char *s)
 {
 	int	i;
 	i = 0;
+	if (s == NULL)
+		return 0;
 	while (s[i])
 	{
 		if (s[i] == '\n')
@@ -33,30 +42,94 @@ int	is_newline(char *s)
 	return -1;
 	
 }
+
+char *ft_check_is_empty(char *tmp, char *buff)
+{
+	char	*hold_temp;
+	int		size;
+
+	size = 0;
+	hold_temp = NULL;
+	if(tmp)
+	{
+		hold_temp = ft_strdup(tmp);
+		free(tmp);
+		size = ft_strlen(buff) + ft_strlen(hold_temp);
+		tmp = malloc(sizeof(char) * (size + 1));
+		if (!tmp)
+			return (NULL);
+		ft_memcpy(tmp, hold_temp, ft_strlen(hold_temp) + 1);
+		tmp[ft_strlen(hold_temp)] = '\0';
+		ft_memcpy(ft_strchr(tmp, '\0'), buff, ft_strlen(buff));
+		tmp[size] = '\0';
+		free(hold_temp);
+	}
+	else if(!tmp)
+		// tmp is empty
+		tmp = ft_strdup(buff);
+	return (tmp);
+}
+
+void aaaaaaaa(char **tmp)
+{
+	char *swap;
+	
+	swap = ft_strdup(ft_strchr(*tmp, '\n') + 1);
+	free(*tmp);
+	*tmp = swap;
+	
+}
+
+char *ft_final_cut(char **tmp, char **buff, int bytes)
+{
+	char *res;
+	char *swap;
+	
+	swap = NULL;
+	res = NULL;
+	if (*tmp && **tmp && bytes == 0) //en cas de fin de fichier
+	{
+		free(*tmp);
+		*tmp = NULL;
+		free(*buff);
+		*buff = NULL;
+		return (NULL);	
+	}
+	if (ft_strchr(*tmp, '\n') != NULL)
+	{
+		res = ft_substr(*tmp, 0,(ft_strlen(*tmp) - ft_strlen(ft_strchr(*tmp, '\n'))) + 1);
+		aaaaaaaa(tmp);
+		return (res);		
+	}
+	
+	return NULL;
+}
+
 char	*get_next_line(int fd)
 {
-	static char *tmp; 
+	static char	*tmp; 
 	char		*buff;
-	char		*res;
 	ssize_t		bytes; //valeur de retour de read
 
-	res = NULL;
 	buff = NULL;
 	bytes = 1;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	while (bytes)
 	{
-		if (is_newline(tmp) != -1) // il a trouvé le char donc on renvoi line
-			tmp = ft_substr((tmp), is_newline(tmp), ft_strlen(tmp) - is_newline(tmp));
+		if (is_newline(tmp) > 0)// il a trouvé le char donc on renvoi line
+			return (ft_final_cut(&tmp, &buff, bytes));
 		buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 		if(!buff)
 			return (NULL);
 		bytes = read(fd, buff, BUFFER_SIZE);
-		tmp = ft_strdup(buff);
+		if (bytes <= 0)
+			break;
+		tmp = ft_check_is_empty(tmp, buff);
 		free(buff);
+		buff = NULL;
 	}
-	return (res);
+		return (ft_final_cut(&tmp, &buff, bytes));
 }
 int main(void)
 {
@@ -69,10 +142,13 @@ int main(void)
 		return 1;
 	}
 	char *res = get_next_line(fd);
-	while (res)
-	{
-		printf("%s", get_next_line(fd));
-		res = get_next_line(fd);        
-	}
+	
+		printf("%s", res);
+		res = get_next_line(fd);
+		printf("%s", res);
+		res = get_next_line(fd);
+		printf("%s", res);
+		res = get_next_line(fd);
+
 	return 0;
 }
