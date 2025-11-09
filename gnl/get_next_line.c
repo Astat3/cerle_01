@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 00:15:56 by agallot           #+#    #+#             */
-/*   Updated: 2025/11/08 13:37:58 by agallot          ###   ########.fr       */
+/*   Updated: 2025/11/09 16:23:53 by adamgallot       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int main(void)
 {
 	int fd = 0;
 	
-	fd = open("rien.txt", O_RDONLY);
+	fd = open("tripouille/files/multiple_nlx5", O_RDONLY);
 	if (fd == -1)
 	{
 		printf("ERROR\n");
@@ -147,4 +147,8 @@ int main(void)
 		printf("%s", res);
 		res = get_next_line(fd);
 	}
+    if (res == NULL)
+    {
+        printf("%s", res);
+    }
 }
