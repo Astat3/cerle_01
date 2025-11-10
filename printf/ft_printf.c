@@ -3,15 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 22:52:27 by adamgallot        #+#    #+#             */
-/*   Updated: 2025/11/09 18:23:46 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/10 12:51:21 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "limits.h"
 
+int print_ptr(void *ptr)
+{
+	int	count;
+
+	count = 0;
+	if (ptr == NULL)
+	count += print_string("(nil)");
+	else
+	{
+		unsigned long long p_val;
+
+		p_val = (unsigned long long) ptr;
+		count += print_string("0x");
+		count += print_nbr_base(p_val, "0123456789abcdef");
+	}
+	return (count);
+}
 
 int format_sel(char format, va_list *list)
 {
@@ -32,14 +50,10 @@ int format_sel(char format, va_list *list)
 		count += ft_print_nbr((unsigned)(va_arg(*list, long int)), "0123456789");
 	else if(format == 'p')
     {
-            unsigned long ptr_format = (unsigned long)(va_arg(*list, void *));
-			count += print_string("0x");
-			count += print_nbr_base(ptr_format,"0123456789abcdef");  
+		count += print_ptr(va_arg(*list, void *));
     }
 	else
-    {
      	count += write(1, &format, 1);   
-    }
 	return (count);
 }
 
@@ -69,13 +83,18 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
+
 // int main(void)
 // {
-// 	int count = 0; 
-// 	int og_count = 0;
-    
-// 	count = ft_printf("%p %p\n", LONG_MIN, LONG_MAX); // doit faire 38
-// 	og_count = printf("%lx %lx\n", LONG_MIN, LONG_MAX);
-// 	printf("count moi: %d\ncount og: %d\n", count, og_count);
-// 	return 0;
+//     int og_count;
+// 	int count;
+
+// 	int *p;
+// 	int a = 100;
+
+// 	p = &a;
+//     og_count = printf("%p\n",p);
+// 	count = ft_printf("%p\n",p);
+//     printf("\nLe VRAI total est : %d\nLe mien est %d\n", og_count, count);
+//     return (0);
 // }
