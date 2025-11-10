@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 13:55:41 by agallot           #+#    #+#             */
-/*   Updated: 2025/11/10 13:55:46 by agallot          ###   ########.fr       */
+/*   Created: 2025/11/04 11:42:18 by agallot           #+#    #+#             */
+/*   Updated: 2025/11/04 13:45:04 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
-	size_t	sign;
-	int		res;
+	const unsigned char	*str1;
+	const unsigned char	*str2;
+	size_t				index;
 
-	i = 0;
-	sign = 1;
-	res = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if ((str[i] == '+') || (str[i] == '-'))
+	index = 0;
+	str1 = (unsigned char *) s1;
+	str2 = (unsigned char *)s2;
+	while (index < n)
 	{
-		if (str[i] == '-')
+		if (str1[index] > str2[index])
 		{
-			sign *= -1;
+			return (1);
 		}
-		i++;
+		if (str1[index] < str2[index])
+		{
+			return (-1);
+		}
+		index++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res *= 10;
-		res += str[i] - '0';
-		i++;
-	}
-	return (res * sign);
+	return (0);
 }
