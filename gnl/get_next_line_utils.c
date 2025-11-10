@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adamgallot <adamgallot@student.42.fr>      +#+  +:+       +#+        */
+/*   By: agallot <agallot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 00:19:07 by agallot           #+#    #+#             */
-/*   Updated: 2025/11/08 17:50:58 by adamgallot       ###   ########.fr       */
+/*   Updated: 2025/11/10 15:37:27 by agallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int  ft_strlen(const char *s)
 	}
 	return i;
 }
-
 
 char	*ft_strdup(const char *s)
 {
